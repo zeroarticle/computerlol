@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Счётчик до 27.12.2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .time {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+    .percent {
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
 
+<h2>До 27.12.2025 16:00 осталось:</h2>
+<div class="time" id="timer"></div>
+<div class="percent" id="percent"></div>
+
+<script>
+  const startTime = Date.now();
+  const endTime = new Date("2025-12-27T16:00:00").getTime();
+
+  function updateTimer() {
+    const now = Date.now();
+    const diff = endTime - now;
+
+    if (diff <= 0) {
+      document.getElementById("timer").textContent = "Время вышло";
+      document.getElementById("percent").textContent = "100%";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("timer").textContent =
+      `${days}д ${hours}ч ${minutes}м ${seconds}с`;
+
+    const total = endTime - startTime;
+    const passed = now - startTime;
+    let percent = (passed / total) * 100;
+    if (percent > 100) percent = 100;
+
+    document.getElementById("percent").textContent =
+      `Прошло: ${percent.toFixed(2)}%`;
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+</script>
+
+</body>
+</html>
