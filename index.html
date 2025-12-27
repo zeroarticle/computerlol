@@ -45,7 +45,7 @@
 
 <h2>Счётчик времени</h2>
 <div class="note">Это счётчик до сборки компьютера</div>
-<div class="warn">Прогресс был сброшен 11:46 для его ускорения</div>
+<div class="warn">Прогресс был сброшен 16:00 для его ускорения</div>
 
 <div class="card best">
   <div>Лучший случай (13:00)</div>
@@ -110,9 +110,9 @@ onChildAdded(commentsRef, snapshot => {
 
 <!-- ===== ТАЙМЕР ===== -->
 <script>
-const totalDuration = 18600 * 1000;
-const bestEnd = new Date("2025-12-27T13:00:00").getTime();
-const worstEnd = new Date("2025-12-27T17:00:00").getTime();
+const totalDuration = 90000 * 1000;
+const bestEnd = new Date("2025-12-28T13:00:00").getTime();
+const worstEnd = new Date("2025-12-28T17:00:00").getTime();
 const bestStart = bestEnd - totalDuration;
 const worstStart = worstEnd - totalDuration;
 
